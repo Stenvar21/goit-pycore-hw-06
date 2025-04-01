@@ -25,7 +25,10 @@ class Record:
         return self.phones.append(Phone(phone))
     
     def remove_phone(self, phone):
-        self.phones=[p for p in self.phones if p.value!=phone]
+        for p in self.phones:
+            if p.value == phone:
+                self.phones.remove(p)
+                return    
         raise ValueError('Phone not found')
     
     def edit_phone(self, old_phone, new_phone):
